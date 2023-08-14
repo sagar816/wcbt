@@ -337,6 +337,29 @@ public function changePassword(Request $request, $id){
         // print_r($user);
     }
 
+    public function getUser($id){
+        $user = User::find($id);
+        if(is_null($user)){
+            return response()->json(
+            [
+                'user' => null,
+                'message' => 'User Not Found',
+                'status' => 0
+            ]
+            );
+        } else {
+            return response()->json(
+                [
+                    'user' => $user,
+                    'message' => 'User Found',
+                    'status' => 1
+                ]
+                );
+        }
+    }
+
+
+
 
 }
 

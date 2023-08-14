@@ -36,6 +36,11 @@ Route::post('/register', [UserController::class, 'register']);
 
 Route::post('/login', [UserController::class, 'login']);
 
+Route::middleware('auth:api')->group(function(){
+    Route::get('/user/{id}',[UserController::class, 'getUser']);
+});
+
 Route::get('/test', function(){
     p("Working");
 });  
+
